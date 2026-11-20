@@ -2,10 +2,11 @@
   "name": "nfs-apperals",
   "version": "1.0.0",
   "description": "NFS Apperals inventory and accounting",
+  "author": "NFS Apperals",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "dist": "electron-builder --win"
+    "dist": "electron-builder --win --publish never"
   },
   "build": {
     "appId": "com.nfsapperals.app",
@@ -13,7 +14,7 @@
     "win": { "target": "nsis" }
   },
   "devDependencies": {
-    "electron": "^31.0.0",
+    "electron": "31.7.7",
     "electron-builder": "^24.13.3"
   }
 }
