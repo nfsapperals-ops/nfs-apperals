@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.gstatic.com; style-src 'self' 'unsafe-inline'; connect-src 'self' https://*.googleapis.com https://*.firebaseio.com wss://*.firebaseio.com https://*.firebaseapp.com https://accounts.google.com; frame-src https://*.firebaseapp.com https://accounts.google.com">
+<title>NFS Apperals</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section id="login" class="screen">
+  <div class="card center">
+    <h1>NFS Apperals</h1>
+    <p>Sign in with your Google account to continue.</p>
+    <button id="signin">Sign in with Google</button>
+    <p id="loginError" class="error"></p>
+  </div>
+</section>
+
+<section id="app" class="screen hidden">
+  <nav>
+    <h2>NFS Apperals</h2>
+    <button data-page="dashboard" class="active">Dashboard</button>
+    <button data-page="inventory">Inventory</button>
+    <button disabled>Customers (next)</button>
+    <button disabled>Invoicing (next)</button>
+    <button disabled>Banking (next)</button>
+    <button disabled>Settings (next)</button>
+    <button id="signout" class="signout">Sign out</button>
+  </nav>
+
+  <main>
+    <div id="dashboard" class="page">
+      <h1>Dashboard</h1>
+      <div class="cards">
+        <div class="card"><h3>Raw items</h3><p id="rawCount">0</p></div>
+        <div class="card"><h3>Ready made items</h3><p id="finCount">0</p></div>
+        <div class="card"><h3>Ready made pieces in stock</h3><p id="piecesTotal">0</p></div>
+      </div>
+    </div>
+
+    <div id="inventory" class="page hidden">
+      <h1>Inventory</h1>
+
+      <h2>Add item</h2>
+      <form id="addItemBar" class="bar">
+        <select name="type">
+          <option value="raw">Raw</option>
+          <option value="finished">Ready Made</option>
+        </select>
+        <input name="name" placeholder="Item name, e.g. CC 0.4 GSM" required>
+        <input name="gsm" placeholder="GSM (raw)">
+        <input name="rollMetres" type="number" step="0.01" placeholder="Metres per roll (raw)">
+        <input name="openingRolls" type="number" step="0.01" placeholder="Rolls to add (raw)">
+        <input name="openingPieces" type="number" step="1" placeholder="Pieces to add (ready made)">
+        <button type="submit">Add</button>
+      </form>
+
+      <h2>Raw materials</h2>
+      <table>
+        <thead><tr><th>Item</th><th>GSM</th><th>Roll (m)</th><th>Stock (m)</th><th>Stock (rolls)</th></tr></thead>
+        <tbody id="rawTable"></tbody>
+      </table>
+
+      <h2>Produce ready made goods</h2>
+      <form id="produceForm" class="bar">
+        <select name="product" id="productSelect"></select>
+        <input name="pieces" type="number" min="1" step="1" placeholder="Pieces to produce" required>
+        <input name="waste" type="number" min="0" step="0.01" placeholder="Waste in metres (first raw line)">
+        <button type="submit">Produce</button>
+      </form>
+
+      <h2>Ready made goods</h2>
+      <table>
+        <thead><tr><th>Item</th><th>Pieces in stock</th></tr></thead>
+        <tbody id="finTable"></tbody>
+      </table>
+
+      <p id="msg" class="msg"></p>
+    </div>
+  </main>
+</section>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
