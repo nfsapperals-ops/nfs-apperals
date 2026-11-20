@@ -15,17 +15,18 @@ const ALLOWED_EMAIL = 'nfsapperals@gmail.com';
 
 // Recipes: how many finished pieces ONE roll of each raw material makes.
 // Products using several raw materials get one line per material.
-// Lines marked CONFIRM are placeholders from your figures; please check them.
 const RECIPES = {
   'Wheel Side Curtain': [
     { raw: 'CC 0.4 GSM', piecesPerRoll: 11 }
   ],
-  'Three Wheel Curtain': [],          // TODO: add Cambrella and CC 0.4 yields
+  'Three Wheel Curtain': [
+    { raw: 'CC 0.4 GSM', piecesPerRoll: 11 }
+  ],
   'Small Bag': [
-    { raw: 'Cambrella 80 GSM', piecesPerRoll: 220 }   // CONFIRM
+    { raw: 'Cambrella 80 GSM', piecesPerRoll: 220 }
   ],
   'Big Bag': [
-    { raw: 'Cambrella 80 GSM', piecesPerRoll: 162 }   // CONFIRM
+    { raw: 'Cambrella 80 GSM', piecesPerRoll: 162 }
   ]
 };
 
@@ -101,7 +102,7 @@ function startListeners() {
   });
 
   $('productSelect').innerHTML = Object.keys(RECIPES)
-    .map(p => `<option value="${p}">${p}${RECIPES[p].length ? '' : ' (no recipe yet)'}</option>`)
+    .map(p => `<option value="${p}">${p}</option>`)
     .join('');
 }
 
