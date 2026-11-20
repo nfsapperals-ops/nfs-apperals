@@ -7,6 +7,8 @@ on:
 jobs:
   build:
     runs-on: windows-latest
+    env:
+      CSC_IDENTITY_AUTO_DISCOVERY: "false"
     steps:
       - uses: actions/checkout@v4
 
@@ -25,3 +27,4 @@ jobs:
         with:
           name: NFS-Apperals-Windows
           path: dist/*.exe
+          if-no-files-found: error
