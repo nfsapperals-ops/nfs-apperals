@@ -1,5 +1,4 @@
 const { app, BrowserWindow } = require('electron');
-const path = require('path');
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -13,7 +12,7 @@ function createWindow() {
     }
   });
   win.setMenuBarVisibility(false);
-  win.loadFile(path.join(__dirname, 'index.html'));
+  win.loadURL('https://nfsapperals-ops.github.io/nfs-apperals/');
 }
 
 app.whenReady().then(() => {
